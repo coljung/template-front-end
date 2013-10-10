@@ -1,0 +1,272 @@
+// MIXINS DEFINITION
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after { 
+    clear: both;
+}
+.clearfix_mixin() {
+  zoom: 1;
+  &:before { content: ''; display: block; }
+  &:after { content: ''; display: table; clear: both; }
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/**
+	Backgrounds
+**/
+
+.bg-pos(@x, @y){
+  background-position: ~"@{x}px" ~"@{y}px";
+}
+
+
+
+/**
+	Take a PX font size value et output in PX for IE8 and lower and in REM for modern browsers.
+**/
+@baseFontSize : 16;
+.font-size (@pxSizeValue){
+  @remValue: (@pxSizeValue / @baseFontSize);
+  font-size: ~"@{pxSizeValue}px"; 
+  font-size: ~"@{remValue}rem";
+}
+.rem-height (@pxSize) {
+  @remValue: (@pxSize / @baseFontSize);
+  height: ~"@{pxSize}px"; 
+  height: ~"@{remValue}rem";
+}
+.rem-min-height (@pxSize) {
+  @remValue: (@pxSize / @baseFontSize);
+  min-height: ~"@{pxSize}px"; 
+  min-height: ~"@{remValue}rem";
+}
+.rem-max-height (@pxSize) {
+  @remValue: (@pxSize / @baseFontSize);
+  max-height: ~"@{pxSize}px"; 
+  max-height: ~"@{remValue}rem";
+}
+.rem-line-height (@pxSize) {
+  @remValue: (@pxSize / @baseFontSize);
+  line-height: ~"@{pxSize}px"; 
+  line-height: ~"@{remValue}rem";
+}
+
+/***
+	IE < 9 Stuffs
+***/
+.inline-block() {
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+}
+
+
+// CSS3 PROPERTIES
+// --------------------------------------------------
+
+// Border Radius
+.border-radius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+// Drop shadows
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+  -webkit-box-shadow: @shadow;
+     -moz-box-shadow: @shadow;
+          box-shadow: @shadow;
+}
+.remove-box-shadow() {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+// Box sizing
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+      -ms-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+// Transitions
+.transition(@transition) {
+  -webkit-transition: @transition;
+     -moz-transition: @transition;
+      -ms-transition: @transition;
+       -o-transition: @transition;
+          transition: @transition;
+}
+// Transformations
+.rotate(@degrees) {
+  -webkit-transform: rotate(@degrees);
+     -moz-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees);
+       -o-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+.scale(@ratio) {
+  -webkit-transform: scale(@ratio);
+     -moz-transform: scale(@ratio);
+      -ms-transform: scale(@ratio);
+       -o-transform: scale(@ratio);
+          transform: scale(@ratio);
+}
+.translate(@x: 0, @y: 0) {
+  -webkit-transform: translate(@x, @y);
+     -moz-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y);
+       -o-transform: translate(@x, @y);
+          transform: translate(@x, @y);
+}
+.skew(@x: 0, @y: 0) {
+  -webkit-transform: skew(@x, @y);
+     -moz-transform: skew(@x, @y);
+      -ms-transform: skew(@x, @y);
+       -o-transform: skew(@x, @y);
+          transform: skew(@x, @y);
+}
+.translate3d(@x: 0, @y: 0, @z: 0) {
+  -webkit-transform: translate3d(@x, @y, @z);
+     -moz-transform: translate3d(@x, @y, @z);
+      -ms-transform: translate3d(@x, @y, @z);
+       -o-transform: translate3d(@x, @y, @z);
+          transform: translate3d(@x, @y, @z);
+}
+
+
+.opacity(@pct) {
+  @alpha: (@pct / 100);
+  -moz-opacity:@alpha;
+  -ms-filter:"alpha(opacity=@{pct})";
+  opacity:@alpha; 
+}
+
+.transition(@prop:all, @duration:.35, @function: ease-out) {
+  -webkit-transition: @prop ~"@{duration}s" @function;
+  -moz-transition: @prop ~"@{duration}s" @function;
+  -ms-transition: @prop ~"@{duration}s" @function;
+  -o-transition: @prop ~"@{duration}s" @function;
+  transition: @prop ~"@{duration}s" @function;
+}
+
+.animate(@transform, @origin:50% 50%, @duration:.35, @prop:all, @function: ease-out) {
+  -webkit-transform:translate3d(0,0,0);
+  -moz-transform: @transform; -moz-transform-origin: @origin;
+  -webkit-transform: @transform; -webkit-transform-origin: @origin;
+  -o-transform: @transform; -o-transform-origin: @origin;
+  -ms-transform: @transform; -ms-transform-origin: @origin;
+  transform: @transform; transform-origin: @origin;
+  .transition(@prop, @duration, @function);
+}
+
+// Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
+// Default 2 steps color
+.linear-gradient(@colorTop, @colorBottom) {
+	background: -moz-linear-gradient(top, @colorTop 0%, @colorBottom 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@colorTop), color-stop(100%,@colorBottom)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, @colorTop 0%,@colorBottom 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, @colorTop 0%,@colorBottom 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, @colorTop 0%,@colorBottom 100%); /* IE10+ */
+	background: linear-gradient(to bottom, @colorTop 0%,@colorBottom 100%); /* W3C */
+}
+	// Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
+	// 2 steps color with color stop
+	.linear-gradient(@colorTop, @stop1, @colorBottom, @stop2:100%) {
+		background: -moz-linear-gradient(top, @colorTop @stop1, @colorBottom @stop2); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(@stop1,@colorTop), color-stop(@stop2,@colorBottom)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, @colorTop @stop1,@colorBottom @stop2); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, @colorTop @stop1,@colorBottom @stop2); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, @colorTop @stop1,@colorBottom @stop2); /* IE10+ */
+		background: linear-gradient(to bottom, @colorTop @stop1,@colorBottom @stop2); /* W3C */
+	}
+	// Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
+	// 3 steps color with color stop
+	.linear-gradient(@colorTop, @stop1, @colorMiddle, @stop2, @colorBottom, @stop3:100%) {
+		background: -moz-linear-gradient(top, @colorTop @stop1, @colorMiddle @stop2, @colorBottom @stop3); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(@stop1,@colorTop), color-stop(@stop2,@colorMiddle), color-stop(@stop3,@colorBottom)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, @colorTop @stop1,@colorMiddle @stop2,@colorBottom @stop3); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, @colorTop @stop1,@colorMiddle @stop2,@colorBottom @stop3); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, @colorTop @stop1,@colorMiddle @stop2,@colorBottom @stop3); /* IE10+ */
+		background: linear-gradient(to bottom, @colorTop @stop1,@colorMiddle @stop2,@colorBottom @stop3); /* W3C */
+	}
+
+.horizontal-gradient(@direction, @colorLeft, @stop1, @colorRight, @stop2) {
+	background: -moz-linear-gradient(left, @colorLeft @stop1, @colorRight @stop2); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(@stop1,@colorLeft), color-stop(@stop2,@colorRight)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, @colorLeft @stop1,@colorRight @stop2); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, @colorLeft @stop1,@colorRight @stop2); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, @colorLeft @stop1,@colorRight @stop2); /* IE10+ */
+	background: linear-gradient(to right, @colorLeft @stop1,@colorRight @stop2); /* W3C */
+}
+//split backgrounds
+.horizontal-gradient(@direction, @colorLeft, @stop1, @colorRight, @stop2, @colorLeft, @stop1, @colorRight, @stop2) {
+  background: -moz-linear-gradient(left, @colorLeft @stop1, @colorRight @stop2); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(@stop1,@colorLeft), color-stop(@stop2,@colorRight)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, @colorLeft @stop1,@colorRight @stop2); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, @colorLeft @stop1,@colorRight @stop2); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, @colorLeft @stop1,@colorRight @stop2); /* IE10+ */
+  background: linear-gradient(to right, @colorLeft @stop1,@colorRight @stop2); /* W3C */
+}
+
+
+
+.unselectable {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;	
+}
+
+.fleft{float:left;}
+.fright{float:right;}
+
+// Placeholder text
+// -------------------------
+.placeholder(@color: @placeholderText) {
+  :-moz-placeholder {
+    color: @color;
+  }
+  ::-webkit-input-placeholder {
+    color: @color;
+  }
+}
+
+
+// Webkit-style focus
+// ------------------
+.tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
