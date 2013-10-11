@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!--[if IE 7]>         <html class="no-js ie ie7"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js ie ie8"> <![endif]-->
-<!--[if IE 9]>         <html class="no-js ie ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+<!--[if IE 7]><html xml:lang="fr" lang="fr" dir="ltr" class="no-js ie ie7 oldIE"> <![endif]-->
+<!--[if IE 8]><html xml:lang="fr" lang="fr" dir="ltr" class="no-js ie ie8 oldIE"> <![endif]-->
+<!--[if IE 9 ]><html xml:lang="fr" lang="fr" dir="ltr" class="no-js ie ie9"><![endif]-->
+<!--[if gt IE 8]><!--> <html xml:lang="fr" lang="fr" dir="ltr" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +12,15 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/styles.css">
-        <script src="js/vendor/custom-modernizr-2.6.2.js"></script>
+        <link rel="stylesheet" href="assets/css/styles.css">
+        
+        <!-- if needed, use modernizr -->
+        <!--<script src="assets/js/vendor/custom-modernizr-2.6.2.js"></script>-->
+
+        <!--[if lt IE 9]>
+            <script src="assets/js/vendor/html5shiv.js"></script>
+        <![endif]-->
+
         <script>
             // global namespace
             var XXX = {};
@@ -23,18 +29,22 @@
     <body>
         <header>
             <div class="inner"></div>
-            <div class="banner" role="banner">
-                
-            </div>
         </header>
-        <main role="main"></main>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <main role="main">
+            
+        </main>
+        <footer role="contentinfo">
+            
+        </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="assets/js/min/plugins.min.js"></script>
+        <script src="assets/js/min/main.min.js"></script>
+
+        <!--[if (gte IE 6)&(lte IE 8)]>
+            <script type="text/javascript" src="../assets/js/vendor/custom.selectivizr-min.js"></script>
+        <![endif]-->        
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
