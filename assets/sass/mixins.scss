@@ -1,4 +1,4 @@
- // MIXINS DEFINITION
+
 
 /*
  * Clearfix: contain floats
@@ -17,9 +17,11 @@
     content: " "; /* 1 */
     display: table; /* 2 */
 }
-.clearfix:after { 
+
+.clearfix:after {
     clear: both;
 }
+
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
@@ -29,86 +31,238 @@
     *zoom: 1;
 }
 
+// @mixin clearfix {
+//     zoom:1;
+//     &:before, &:after {
+//      content: " "; 
+//      display: table; 
+//     }
+//     &:after {
+//         clear: both;
+//     }
+// }
 
 /**
-	Backgrounds
+  Backgrounds
 **/
 
  @mixin bg-pos($x, $y){
-  background-position: $x + px $y + px;
+  background-position: $x $y;
 }
 /**
-	Take a PX font size value et output in PX for IE8 and lower and in REM for modern browsers.
+  Take a PX font size value et output in PX for IE8 and lower and in REM for modern browsers.
 **/
 $baseFontSize : 16;
 @mixin font-size ($pxSizeValue){
-  $remValue: ($pxSizeValue / $baseFontSize);
-  font-size: $pxSizeValue + px;
-  font-size: $remValue + rem;
+    $remValue: ($pxSizeValue / $baseFontSize);
+    font-size: $pxSizeValue + px;
+    font-size: $remValue + rem;
 }
- @mixin rem-height ($pxSize) {
-  $remValue: ($pxSize / $baseFontSize);
-  height: $pxSizeValue + px;
-  height: $remValue + rem;
+ @mixin rem-height ($pxSizeValue) {
+    $remValue: ($pxSizeValue / $baseFontSize);
+    height: $pxSizeValue + px;
+    height: $remValue + rem;
 }
- @mixin rem-min-height ($pxSize) {
-  $remValue: ($pxSize / $baseFontSize);
-  min-height: $pxSizeValue + px;
-  min-height: $remValue + rem;
+ @mixin rem-min-height ($pxSizeValue) {
+    $remValue: ($pxSizeValue / $baseFontSize);
+    min-height: $pxSizeValue + px;
+    min-height: $remValue + rem;
 }
- @mixin rem-max-height ($pxSize) {
-  $remValue: ($pxSize / $baseFontSize);
-  max-height: $pxSizeValue + px;
-  max-height: $remValue + rem;
+ @mixin rem-max-height ($pxSizeValue) {
+    $remValue: ($pxSizeValue / $baseFontSize);
+    max-height: $pxSizeValue + px;
+    max-height: $remValue + rem;
 }
- @mixin rem-line-height ($pxSize) {
-  $remValue: ($pxSize / $baseFontSize);
-  line-height: $pxSizeValue + px;
-  line-height: $remValue + rem;
+ @mixin rem-line-height ($pxSizeValue) {
+    $remValue: ($pxSizeValue / $baseFontSize);
+    line-height: $pxSizeValue + px;
+    line-height: $remValue + rem;
 }
 
 /***
-	IE < 9 Stuffs
+  IE < 9 Stuffs
 ***/
-.inline-block {
-	display:inline-block;
-	*display:inline;
-	*zoom:1;
+@mixin inline-block {
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
 }
 
 
 
 .unselectable {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;	
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;  
 }
 
 .fleft{float:left;}
 .fright{float:right;}
 
+.hide-text {
+  text-indent:-8000px;
+  overflow:hidden;
+}
+
 // Placeholder text
-// -------------------------
- @mixin placeholder($color: $placeholderText) {
-  :-moz-placeholder {
-    color: $color;
-  }
-  ::-webkit-input-placeholder {
-    color: $color;
-  }
+
+
+// CSS3 PROPERTIES
+// --------------------------------------------------
+
+// Border Radius
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// Drop shadows
+@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+@mixin remove-box-shadow() {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+// Box sizing
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+     -moz-box-sizing: $boxmodel;
+      -ms-box-sizing: $boxmodel;
+          box-sizing: $boxmodel;
+}
+
+// Transitions
+// @mixin transition($transition) {
+//   -webkit-transition: $transition;
+//      -moz-transition: $transition;
+//       -ms-transition: $transition;
+//        -o-transition: $transition;
+//           transition: $transition;
+// }
+// Transformations
+@mixin rotate($degrees) {
+  -webkit-transform: rotate($degrees);
+     -moz-transform: rotate($degrees);
+      -ms-transform: rotate($degrees);
+       -o-transform: rotate($degrees);
+          transform: rotate($degrees);
+}
+
+@mixin scale($ratio) {
+  -webkit-transform: scale($ratio);
+     -moz-transform: scale($ratio);
+      -ms-transform: scale($ratio);
+       -o-transform: scale($ratio);
+          transform: scale($ratio);
+}
+@mixin translate($x: 0, $y: 0) {
+  -webkit-transform: translate($x, $y);
+     -moz-transform: translate($x, $y);
+      -ms-transform: translate($x, $y);
+       -o-transform: translate($x, $y);
+          transform: translate($x, $y);
+}
+@mixin skew($x: 0, $y: 0) {
+  -webkit-transform: skew($x, $y);
+     -moz-transform: skew($x, $y);
+      -ms-transform: skew($x, $y);
+       -o-transform: skew($x, $y);
+          transform: skew($x, $y);
+}
+@mixin translate3d($x: 0, $y: 0, $z: 0) {
+  -webkit-transform: translate3d($x, $y, $z);
+     -moz-transform: translate3d($x, $y, $z);
+      -ms-transform: translate3d($x, $y, $z);
+       -o-transform: translate3d($x, $y, $z);
+          transform: translate3d($x, $y, $z);
 }
 
 
-// Webkit-style focus
-// ------------------
-.tab-focus {
-  // Default
-  outline: thin dotted #333;
-  // Webkit
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+@mixin opacity($pct) {
+  //$alpha: ($pct / 100);
+   filter: alpha(opactiy=($pct * 100));
+  -ms-filter: "progid:DXImagepctform.Microsoft.Alpha(Opacity=#{$pct * 100})";
+  -moz-opacity: $pct;
+  opacity: $pct;
+}
+
+@mixin transition($transition-property,  $transition-time,  $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+@mixin animate($transform, $origin:50% 50%, $duration:.35, $prop:all, $function: ease-out) {
+  -webkit-transform:translate3d(0,0,0);
+  -moz-transform: $transform; -moz-transform-origin: $origin;
+  -webkit-transform: $transform; -webkit-transform-origin: $origin;
+  -o-transform: $transform; -o-transform-origin: $origin;
+  -ms-transform: $transform; -ms-transform-origin: $origin;
+  transform: $transform; transform-origin: $origin;
+  @include transition($prop, $duration, $function);
+}
+
+@mixin text-shadow($offsetX, $offsetY, $blur:0px, $color:#000) {
+    text-shadow: $offsetX $offsetY $blur $color;
+    filter: dropshadow(color=$color, offx=$offsetX, offy=$offsetY);
+}
+
+// Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
+// Default 2 steps color
+@mixin linear-gradient($colorTop, $colorBottom) {
+  background: -moz-linear-gradient(top, $colorTop 0%, $colorBottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$colorTop), color-stop(100%,$colorBottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $colorTop 0%,$colorBottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $colorTop 0%,$colorBottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $colorTop 0%,$colorBottom 100%); /* IE10+ */
+  background: linear-gradient(to bottom, $colorTop 0%,$colorBottom 100%); /* W3C */
+}
+  // Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
+  // 2 steps color with color stop
+@mixin linear-gradient($colorTop, $stop1, $colorBottom, $stop2:100%) {
+    background: -moz-linear-gradient(top, $colorTop $stop1, $colorBottom $stop2); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop($stop1,$colorTop), color-stop($stop2,$colorBottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* IE10+ */
+    background: linear-gradient(to bottom, $colorTop $stop1,$colorBottom $stop2); /* W3C */
+  }
+  // Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
+  // 3 steps color with color stop  
+@mixin linear-gradient($colorTop, $stop1, $colorMiddle, $stop2, $colorBottom, $stop3:100%) {
+    background: -moz-linear-gradient(top, $colorTop $stop1, $colorMiddle $stop2, $colorBottom $stop3); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop($stop1,$colorTop), color-stop($stop2,$colorMiddle), color-stop($stop3,$colorBottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $colorTop $stop1,$colorMiddle $stop2,$colorBottom $stop3); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $colorTop $stop1,$colorMiddle $stop2,$colorBottom $stop3); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $colorTop $stop1,$colorMiddle $stop2,$colorBottom $stop3); /* IE10+ */
+    background: linear-gradient(to bottom, $colorTop $stop1,$colorMiddle $stop2,$colorBottom $stop3); /* W3C */
+  }
+
+@mixin horizontal-gradient($direction, $colorLeft, $stop1, $colorRight, $stop2) {
+  background: -moz-linear-gradient(left, $colorLeft $stop1, $colorRight $stop2); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop($stop1,$colorLeft), color-stop($stop2,$colorRight)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* IE10+ */
+  background: linear-gradient(to right, $colorLeft $stop1,$colorRight $stop2); /* W3C */
+}
+//split backgrounds
+@mixin horizontal-gradient($direction, $colorLeft, $stop1, $colorRight, $stop2, $colorLeft, $stop1, $colorRight, $stop2) {
+  background: -moz-linear-gradient(left, $colorLeft $stop1, $colorRight $stop2); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop($stop1,$colorLeft), color-stop($stop2,$colorRight)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* IE10+ */
+  background: linear-gradient(to right, $colorLeft $stop1,$colorRight $stop2); /* W3C */
 }
 

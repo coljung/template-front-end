@@ -1,31 +1,28 @@
 
-//Compass predefined functions
-@import "_compass";
-
 // WebFonts
-@import "fonts";
+@import "fonts";  
 
 // Core variables and mixins
 @import "variables"; // Modify this for custom colors, font-sizes, etc
 @import "mixins";
 
-// CSS Reset and normalize
-@import "reset";
+// CSS normalize
 @import "normalize";
 
 // Base CSS
 @import "type";
 @import "icons";
-/*@import "forms";
-@import "tables";*/
+//@import "tables";
 
-// Global CSS
+// Global CSS  
 @import "main";
-@import "navigation";
+@import "navigation"; 
+@import "forms";  
 @import "modules";
-/*@import "slider";*/
+@import "slider";
 
 //Responsive
+@import "responsive";
 /*@import "responsive-desktop";
 @import "responsive-tablet";
 @import "responsive-phone"; */
