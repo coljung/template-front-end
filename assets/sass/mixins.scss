@@ -217,29 +217,22 @@ $baseFontSize : 16;
     filter: dropshadow(color=$color, offx=$offsetX, offy=$offsetY);
 }
 
-// Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
+// 
 // Default 2 steps color
-@mixin linear-gradient($colorTop, $colorBottom) {
-  background: -moz-linear-gradient(top, $colorTop 0%, $colorBottom 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$colorTop), color-stop(100%,$colorBottom)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, $colorTop 0%,$colorBottom 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, $colorTop 0%,$colorBottom 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, $colorTop 0%,$colorBottom 100%); /* IE10+ */
-  background: linear-gradient(to bottom, $colorTop 0%,$colorBottom 100%); /* W3C */
+// Vertical gradient, 2 stops
+@mixin linear-gradient($colorTop, $stop1, $colorBottom, $stop2:100%)  {
+  background: -moz-linear-gradient(top, $colorTop $stop1, $colorBottom $stop2); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$colorTop), color-stop($stop2,$colorBottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* IE10+ */
+  background: linear-gradient(to bottom, $colorTop $stop1,$colorBottom $stop2); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=${colorTop}, endColorstr=${colorBottom},GradientType=0 ); /* IE6-8 */
 }
+
   // Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
-  // 2 steps color with color stop
-@mixin linear-gradient($colorTop, $stop1, $colorBottom, $stop2:100%) {
-    background: -moz-linear-gradient(top, $colorTop $stop1, $colorBottom $stop2); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop($stop1,$colorTop), color-stop($stop2,$colorBottom)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, $colorTop $stop1,$colorBottom $stop2); /* IE10+ */
-    background: linear-gradient(to bottom, $colorTop $stop1,$colorBottom $stop2); /* W3C */
-  }
-  // Top to bottom linear gradient *** EXCLUDE IE 9 SVG FORMAT + Pie Background for IE6 to IE8
-  // 3 steps color with color stop  
-@mixin linear-gradient($colorTop, $stop1, $colorMiddle, $stop2, $colorBottom, $stop3:100%) {
+  // Vertical gradient, 3 stops
+@mixin linear-gradient-tri($colorTop, $stop1, $colorMiddle, $stop2, $colorBottom, $stop3:100%) {
     background: -moz-linear-gradient(top, $colorTop $stop1, $colorMiddle $stop2, $colorBottom $stop3); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop($stop1,$colorTop), color-stop($stop2,$colorMiddle), color-stop($stop3,$colorBottom)); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top, $colorTop $stop1,$colorMiddle $stop2,$colorBottom $stop3); /* Chrome10+,Safari5.1+ */
@@ -248,7 +241,8 @@ $baseFontSize : 16;
     background: linear-gradient(to bottom, $colorTop $stop1,$colorMiddle $stop2,$colorBottom $stop3); /* W3C */
   }
 
-@mixin horizontal-gradient($direction, $colorLeft, $stop1, $colorRight, $stop2) {
+// Horizontal gradient, 2 stops
+@mixin horizontal-gradient($colorLeft, $stop1, $colorRight, $stop2:100%) {
   background: -moz-linear-gradient(left, $colorLeft $stop1, $colorRight $stop2); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, right top, color-stop($stop1,$colorLeft), color-stop($stop2,$colorRight)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* Chrome10+,Safari5.1+ */
@@ -256,13 +250,14 @@ $baseFontSize : 16;
   background: -ms-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* IE10+ */
   background: linear-gradient(to right, $colorLeft $stop1,$colorRight $stop2); /* W3C */
 }
-//split backgrounds
-@mixin horizontal-gradient($direction, $colorLeft, $stop1, $colorRight, $stop2, $colorLeft, $stop1, $colorRight, $stop2) {
-  background: -moz-linear-gradient(left, $colorLeft $stop1, $colorRight $stop2); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop($stop1,$colorLeft), color-stop($stop2,$colorRight)); /* Chrome,Safari4+ */
+
+// Horizontal gradient, 3 stops
+@mixin horizontal-gradient-tri($colorLeft, $stop1, $colorMiddle, $stop2, $colorRight, $stop3) {
+  background: -moz-linear-gradient(left, $colorLeft $stop1, $colorMiddle $stop2, $colorRight $stop3); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop($stop1,$colorLeft), color-stop($stop2,$colorMiddle), color-stop($stop3,$colorRight)); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* IE10+ */
-  background: linear-gradient(to right, $colorLeft $stop1,$colorRight $stop2); /* W3C */
+  background: -o-linear-gradient(left, $colorLeft $stop1, $colorMiddle $stop2, $colorRight $stop3); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, $colorLeft $stop1, $colorMiddle $stop2, $colorRight $stop3); /* IE10+ */
+  background: linear-gradient(to right, $colorLeft $stop1, $colorMiddle $stop2, $colorRight $stop3); /* W3C */
 }
 
