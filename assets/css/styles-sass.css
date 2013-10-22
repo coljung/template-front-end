@@ -776,6 +776,7 @@ body {
   /* IE10+ */
   background: linear-gradient(to right, #eeeeee 10%, #222222 100%);
   /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=${colorTop}, endColorstr=${colorBottom},GradientType=1 );
 }
 
 .inner {

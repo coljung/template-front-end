@@ -249,6 +249,7 @@ $baseFontSize : 16;
   background: -o-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* Opera 11.10+ */
   background: -ms-linear-gradient(left, $colorLeft $stop1,$colorRight $stop2); /* IE10+ */
   background: linear-gradient(to right, $colorLeft $stop1,$colorRight $stop2); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=${colorTop}, endColorstr=${colorBottom},GradientType=1 );
 }
 
 // Horizontal gradient, 3 stops
