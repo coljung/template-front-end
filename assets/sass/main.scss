@@ -17,10 +17,10 @@ html {
 	line-height: $baseLineHeight;
 }
 body {
-    font-size: 2em;
-	//background: $grayEE;
-	height: 800px;
-	@include horizontal-gradient(#eee, 10%, #222, 100%);
+    font-size: 1em;
+	// background: $grayEE;
+	// height: 800px;
+	// @include horizontal-gradient(#eee, 10%, #222, 100%);
 	//@include linear-gradient-tri(#eee, 10%, #2f5, 35%, #222, 80%);
 }
 
