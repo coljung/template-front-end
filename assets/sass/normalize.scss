@@ -545,6 +545,7 @@ table {
 
     .ir a:after,
     a[href^="javascript:"]:after,
+    a[href^="/:"]:after,
     a[href^="#"]:after {
         content: "";
     }
@@ -580,7 +581,8 @@ table {
     }
 
     h2,
-    h3 {
+    h3,
+    ul, img  {
         page-break-after: avoid;
     }
 }
