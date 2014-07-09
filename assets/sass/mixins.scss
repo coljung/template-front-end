@@ -42,7 +42,7 @@
 /**
   Take a PX font size value et output in PX for IE8 and lower and in REM for modern browsers.
 **/
-$baseFontSize : 16;
+// basefontsize: 16, set in variables.scss
 @mixin font-size ($pxSizeValue){
     $remValue: ($pxSizeValue / $baseFontSize);
     font-size: $pxSizeValue + px;
@@ -131,14 +131,6 @@ $baseFontSize : 16;
           box-sizing: $boxmodel;
 }
 
-// Transitions
-// @mixin transition($transition) {
-//   -webkit-transition: $transition;
-//      -moz-transition: $transition;
-//       -ms-transition: $transition;
-//        -o-transition: $transition;
-//           transition: $transition;
-// }
 // Transformations
 @mixin rotate($degrees) {
   -webkit-transform: rotate($degrees);
@@ -177,7 +169,6 @@ $baseFontSize : 16;
           transform: translate3d($x, $y, $z);
 }
 
-
 @mixin opacity($pct) {
   //$alpha: ($pct / 100);
    filter: alpha(opactiy=($pct * 100));
@@ -185,6 +176,12 @@ $baseFontSize : 16;
   -moz-opacity: $pct;
   opacity: $pct;
 }
+
+@mixin text-shadow($offsetX, $offsetY, $blur:0px, $color:#000) {
+    text-shadow: $offsetX $offsetY $blur $color;
+    filter: dropshadow(color=$color, offx=$offsetX, offy=$offsetY); 
+}
+
 
 @mixin transition($transition-property,  $transition-time,  $method) {
     -webkit-transition: $transition-property $transition-time $method;
@@ -226,11 +223,6 @@ $baseFontSize : 16;
   @keyframes #{$name} {
     @content;
   } 
-}
-
-@mixin text-shadow($offsetX, $offsetY, $blur:0px, $color:#000) {
-    text-shadow: $offsetX $offsetY $blur $color;
-    filter: dropshadow(color=$color, offx=$offsetX, offy=$offsetY); 
 }
 
 // 

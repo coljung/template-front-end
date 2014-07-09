@@ -49,11 +49,9 @@ $altLinkColorHover:  	darken($yellow, 15%);
 // -------------------------
 $baseFontSize:          16px;
 $baseFontFamily:        Georgia, "Times New Roman", Times, serif;
-$bebas:					'bebas-neue';
 $baseLineHeight:        1.5;
 $altFontFamily:         $baseFontFamily;
-$headingsFontFamily:    $bebas;
-$headingsFontWeight:    normal;
+$headingsFont:    		$altFont;
 
 
 // Base
