@@ -14,20 +14,15 @@ html {
 	color:$textColor;
 	font-family: $baseFontFamily;
 	background-color: $bodyBackground;
-	/*font-size: 1em; */
 	font-size: 100%; /* Global base font-size default */
 	line-height: $baseLineHeight;
 }
 body {
     font-size: 1em;
-	// background: $grayEE;
-	// height: 800px;
-	// @include horizontal-gradient(#eee, 10%, #222, 100%);
-	//@include linear-gradient-tri(#eee, 10%, #2f5, 35%, #222, 80%);
 }
 
 .inner{
-	max-width: 960px;
+	max-width: $innerContentW;
 	margin: 0 auto;
 	position: relative;
 }
@@ -39,9 +34,7 @@ body {
 /* ==========================================================================
    Header
    ========================================================================== */
-body > header{
-	/*background: @white;*/
-}
+
 header{
 
 }
