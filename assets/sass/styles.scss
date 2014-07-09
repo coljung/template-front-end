@@ -6,24 +6,37 @@
 @import "variables"; // Modify this for custom colors, font-sizes, etc
 @import "mixins";
 
-// CSS normalize
+// CSS normalize + basic reset
 @import "normalize";
+@import "print";
 
 // Base CSS
 @import "type";
 @import "icons";
+//@import "buttons";
 //@import "tables";
+
+//plugins 
+// @import "plugins/owl-carousel";
+// @import "plugins/fancybox";
 
 // Global CSS  
 @import "main";
-@import "navigation"; 
-/*@import "forms";  
-@import "modules";
-@import "slider";*/
+@import "navigation";  
 
-//Responsive  
-/*@import "responsive";*/
-/*@import "responsive-desktop";
-@import "responsive-tablet";
-@import "responsive-phone"; */  
+//Modules
+// @import "modules/home";
+// @import "modules/general";  
+
+
+//extras
+// @import "sliders";
+// @import "animations";
+
+//responsive
+// @import "responsive/desktop";
+// @import "responsive/tablet";
+// @import "responsive/mobile";
+
+
 

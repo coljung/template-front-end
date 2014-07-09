@@ -112,4 +112,7 @@ a {
 		color: $linkColorHover;
 		text-decoration: underline;
 	}
+	&.active{
+		cursor: default;
+	}
 }

@@ -1,4 +1,6 @@
-
+*{
+    @include box-sizing(border-box);
+}  
 
 /*
  * global CSS
