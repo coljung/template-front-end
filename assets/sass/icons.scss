@@ -3,14 +3,6 @@
    Icons
    ========================================================================== */
 [class^="icon-"], [class*=" icon-"] {
-	@include inline-block;
+	display: inline-block;
 	background:  url($imgPath + '_sprite.png') no-repeat;
 }
-
-.icon-social{} 
-	.icon-fb{
-		@include bg-pos(-68,-22);
-	}
-	.icon-tw{
-		@include bg-pos(-68,-56);
-	}

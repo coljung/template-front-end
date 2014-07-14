@@ -8,7 +8,6 @@
 
 // CSS normalize + basic reset
 @import "normalize";
-@import "print";
 
 // Base CSS
 @import "type";
@@ -38,5 +37,8 @@
 // @import "responsive/tablet";
 // @import "responsive/mobile";
 
+
+// last, print basic styling
+@import "print";
 
 
