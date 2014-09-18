@@ -172,7 +172,7 @@
 @mixin opacity($pct) {
   //$alpha: ($pct / 100);
    filter: alpha(opactiy=($pct * 100));
-  -ms-filter: "progid:DXImagepctform.Microsoft.Alpha(Opacity=#{$pct * 100})";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$pct * 100})";
   -moz-opacity: $pct;
   opacity: $pct;
 }
