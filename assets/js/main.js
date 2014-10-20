@@ -1,12 +1,12 @@
-'use strict';
+
 
 /****
 	Main JS file
 ****/
 
-(function() {
+(function (window, document, $,) {
 
+    'use strict';
 
-})(jQuery);
-
-
+    
+})(window, document, jQuery);

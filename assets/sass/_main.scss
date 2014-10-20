@@ -12,24 +12,26 @@
    ========================================================================== */
 
 html {
-	color:$textColor;
-	font-family: $baseFontFamily;
-	background-color: $bodyBackground;
-	font-size: 100%; /* Global base font-size default */
-	line-height: $baseLineHeight;
+  	color:$textColor;
+  	font-family: $baseFontFamily;
+  	background-color: $bodyBackground;
+  	font-size: 100%; /* Global base font-size default */
+  	line-height: $baseLineHeight;
 }
 body {
     font-size: 1em;
+    &.clip{
+        overflow: hidden;
+    }
 }
 
 .inner{
-	max-width: $innerContentW;
-	margin: 0 auto;
-	position: relative;
+  	max-width: $innerContentW;
+  	margin: 0 auto;
+  	position: relative;
 }
 
 /*ie8 with box sizing, max-width and padding messes up the total witdh */
-
 
 
 /* ==========================================================================
@@ -39,9 +41,11 @@ body {
 header{
 
 }
-/**** fixes issue with max-width and box-sizing on IE*****/
 
 
+.logo{
+
+}
 
 
 /* ==========================================================================
@@ -51,11 +55,6 @@ header{
 main{
 
 }
-
-.content{
-
-}
-
 
 
 /* ==========================================================================

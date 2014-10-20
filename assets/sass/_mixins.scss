@@ -33,7 +33,7 @@
 
 
 /**
-  Backgrounds
+  Backgrounds  
 **/
 
  @mixin bg-pos($x, $y){
@@ -75,7 +75,7 @@
 @mixin inline-block {
     display:inline-block;
     *display:inline;
-    *zoom:1;
+    *zoom:1; 
 }
 
 
@@ -102,13 +102,12 @@
 // Placeholder text
 
 
-// CSS3 PROPERTIES
+// CSS3 PROPERTIES 
 // --------------------------------------------------
 
 // Border Radius
 @mixin border-radius($radius: 5px) {
   -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
           border-radius: $radius;
 }
 
@@ -191,6 +190,13 @@
     transition: $transition-property $transition-time $method;
 }
 
+@mixin transition-transform($transition) {
+  -webkit-transition: -webkit-transform $transition; /* Changed here */ 
+  -moz-transition: -moz-transform $transition;
+  -o-transition: -o-transform $transition;
+  transition: transform $transition;  
+}
+
 @mixin animation($animation-name,  $animation-time,  $animation-kind, $animation-type) {
     -webkit-animation: $animation-name $animation-time $animation-kind $animation-type;
     -moz-animation: $animation-name $animation-time $animation-kind $animation-type;
@@ -270,3 +276,6 @@
   background: linear-gradient(to right, $colorLeft $stop1, $colorMiddle $stop2, $colorRight $stop3); /* W3C */
 }
 
+@mixin ie-behavior() {
+  behavior: url(../js/css3pie/PIE.htc);
+}

@@ -1,0 +1,21 @@
+// column layout
+.multicolumn{
+	@extend .clearfix;
+	margin: 0 0 30px;
+	.col{
+		float: left;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

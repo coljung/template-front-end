@@ -6,9 +6,8 @@
 // ---------
 
 p {
-	margin: 0;
+	margin: 0;  
 	font-family: $baseFontFamily;
-	@include font-size(14);
 	line-height: $baseLineHeight;
 }
 
@@ -22,19 +21,19 @@ h1, h2, h3, h4, h5, h6,
 	font-weight: $headingsFontWeight;
 	color: $textColor;
 	text-rendering: optimizelegibility; // Fix the character spacing for headings
-	line-height: 1;
+	line-height: 1.1;
 	small {
 		font-weight: normal;
 		color: $grayLight;
 	}
 }
 
-h1, .h1 {
-	@include font-size(48);
+h1, .h1{
+	@include font-size(52);  
 }
 
-h2, .h2 {
-	@include font-size(36);
+h2, .h2  {
+	@include font-size(44);  
 }
 
 h3, .h3 {
@@ -59,7 +58,7 @@ h6, .h6 {
 // Unordered and Ordered lists
 ul, ol {
 	padding: 0;
-	margin: 0 0 $baseLineHeight / 2 0;
+	margin: 0;
 }
 
 ul ul,

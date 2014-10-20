@@ -17,7 +17,7 @@ $darkBg:     	        #201f1f;
 $darkText:              #3d3d3d;
 $gray:                  #5f5f5f;
 $grayLight:             #94918f;
-$grayLighter:           #a1a1a1;
+$grayLighter:           #bababa;
 $grayEE:           		#eee;
 $white:                 #fff;
 $red:                 	#ed1b24;
@@ -27,36 +27,41 @@ $orange:                #f4ba39;
 
 // Accent colors
 // -------------------------
-$yellow:                #f4ba39;
-
+$yellow:                #fff000; 
+$ypg-gray: 				#4d4c47;
+$ypg-blue:   			#0096cf;
 
 // Scaffolding
 // -------------------------
 $bodyBackground:        $white;
-$textColor:             $darkText;
+$textColor:             #444;
 
 
 // Links
 // -------------------------
-$linkColor:             #08c;
-$linkColorHover:        darken($linkColor, 15%);
+$linkColor:             #0096cf;
+$linkColorHover:        lighten($linkColor, 15%);
 $altLinkColor:  		$yellow;
 $altLinkColorHover:  	darken($yellow, 15%);
 
-
+// Buttons
+// -------------------------
+$btnBgColorDisabled:    #79d0f1;
+$btnColorDisabled:    	#ECF7FC;
 
 // Typography
 // -------------------------
 $baseFontSize:          16;
-$baseFontFamily:        Georgia, "Times New Roman", Times, serif;
+$baseFontFamily:        "Open Sans", sans-serif;
 $baseLineHeight:        1.5;
-$altFontFamily:         $baseFontFamily;
-$headingsFontFamily:    $altFontFamily;
-$headingsFontWeight: 	normal;
+$altFontFamily:         sans-serif;
+$headingsFontFamily:    $baseFontFamily;
+$headingsFontWeight: 	300;
+
 
 // Base
 // -------------------------
-$innerContentW:			960px;
+$innerContentW:			1140px;
 
 
 //   MAYBE   ************************//

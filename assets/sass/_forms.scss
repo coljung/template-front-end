@@ -1,0 +1,40 @@
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+   
+// Base styles for various input types, form layouts, and states
+// -------------------------------------------------------------
+
+// Inputs, Textareas, Selects
+input,
+textarea,
+select,
+.uneditable-input, input:not[type="submit"] {
+	display: inline-block;
+	width: 210px;
+	padding: 4px;
+	margin-bottom: 9px;
+	@include font-size(14);
+	@include border-radius(3px);
+}
+
+.uneditable-textarea {
+	width: auto;
+	height: auto;
+}
+
+
+
+/* fix select height bug on webkit browsers for Mac OS */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	select {-webkit-appearance: menulist-button;}
+} 
+/*http://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone*/
+@media screen and (max-width:47.5em) and (-webkit-min-device-pixel-ratio:0) { 
+ select:focus, textarea:focus, input:focus {
+	 font-size: 16px;
+	 background:#fff;
+  }
+ }
+
