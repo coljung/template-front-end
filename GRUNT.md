@@ -6,6 +6,7 @@
   * Then, check if ruby is on your system, typing: ruby -v, if not then install it
   * Last, to compile sass via grunt we need sass installed, for that you need this command:  gem install sass
   * Voila, it should work. Otherwise, just google it!
-  * 
+ 
+
   
 
